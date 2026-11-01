@@ -1,122 +1,223 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cybersecurity Portfolio</title>
+  <meta name="description" content="Cybersecurity portfolio of Pendem Lalu Venkata Karthik — network security, ethical hacking, and defensive security learning.">
+  <title>Karthik | Cybersecurity Portfolio</title>
   <style>
+    :root {
+      --bg: #080d12; --panel: #101923; --panel2: #142230; --text: #e7eef5;
+      --muted: #a5b4c2; --accent: #00f5a0; --accent2: #43b7ff; --border: #263746;
+      --shadow: 0 18px 50px rgba(0,0,0,.22);
+    }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #080d12;
-      color: #e5edf5;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 Inter, ui-sans-serif, system-ui, Arial, sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--bg) 88%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:70px; }
+    .brand { color:var(--accent); font-weight:900; letter-spacing:.12em; }
+    .navlinks { display:flex; flex-wrap:wrap; gap:18px; }
+    .navlinks a { color:var(--text); font-size:.92rem; }
+    .theme-switch { display:flex; gap:7px; flex-wrap:wrap; }
+    button { cursor:pointer; border:1px solid var(--border); color:var(--text); background:var(--panel); padding:8px 11px; border-radius:9px; font-weight:650; }
+    button:hover, button.active { border-color:var(--accent); color:var(--accent); }
+    .hero { padding:86px 0 62px; display:grid; grid-template-columns:1.5fr .8fr; gap:32px; align-items:center; }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; font-weight:800; }
+    h1 { font-size:clamp(2.35rem,6vw,4.5rem); line-height:1.08; margin:14px 0; letter-spacing:-.045em; }
+    h1 span { color:var(--accent); }
+    h2 { font-size:clamp(1.65rem,3vw,2.25rem); margin:0 0 18px; }
+    h3 { margin:0 0 8px; }
+    p { color:var(--muted); }
+    .lead { font-size:1.12rem; max-width:680px; }
+    .hero-card, .card, .skill, .credential { background:var(--panel); border:1px solid var(--border); border-radius:17px; box-shadow:var(--shadow); }
+    .hero-card { padding:25px; }
+    .terminal-head { color:var(--accent); font-family:ui-monospace,monospace; font-size:.9rem; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:14px; }
+    .terminal-line { color:var(--muted); font-family:ui-monospace,monospace; font-size:.91rem; overflow-wrap:anywhere; }
+    .terminal-line b { color:var(--accent); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
+    .primary { background:var(--accent); color:#06120d; border-color:var(--accent); padding:11px 17px; }
+    .primary:hover { color:#06120d; filter:brightness(1.08); text-decoration:none; }
+    .secondary { padding:11px 17px; }
+    section { padding:58px 0; border-top:1px solid var(--border); }
+    .section-intro { max-width:720px; margin-top:-8px; margin-bottom:25px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { padding:22px; }
+    .card p { margin-bottom:0; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { font-size:.78rem; padding:5px 9px; border-radius:99px; border:1px solid var(--border); color:var(--muted); background:var(--panel2); }
+    .skills { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .skill { padding:20px; }
+    .skill h3 { color:var(--accent); }
+    .status { display:inline-block; font-size:.75rem; border:1px solid #8a7133; color:#ffd778; border-radius:99px; padding:3px 9px; margin-bottom:10px; }
+    .credential { padding:18px; }
+    .credential small { color:var(--muted); display:block; margin-top:5px; }
+    .timeline { border-left:2px solid var(--accent); padding-left:22px; }
+    .timeline .card { margin-bottom:14px; }
+    .contactbox { background:linear-gradient(135deg,var(--panel),var(--panel2)); border:1px solid var(--border); border-radius:18px; padding:28px; }
+    footer { border-top:1px solid var(--border); padding:25px 0; color:var(--muted); font-size:.9rem; }
+    body[data-theme="professional"] {
+      --bg:#f4f7fb; --panel:#fff; --panel2:#eaf0f7; --text:#172638; --muted:#526477;
+      --accent:#075fc7; --accent2:#087e8b; --border:#d7e0ea; --shadow:0 12px 32px rgba(25,55,85,.08);
     }
-    header {
-      padding: 22px 8%;
-      background: #101923;
-      border-bottom: 1px solid #263746;
+    body[data-theme="redblue"] {
+      --bg:#090d17; --panel:#111a2b; --panel2:#19243a; --text:#edf1fa; --muted:#aeb9cb;
+      --accent:#ff5268; --accent2:#4aa8ff; --border:#2b3a55; --shadow:0 18px 50px rgba(0,0,0,.25);
     }
-    header h2 { color: #00ff99; margin: 0; }
-    nav { margin-top: 12px; }
-    nav a {
-      color: #dce7ef;
-      margin-right: 18px;
-      text-decoration: none;
+    body[data-theme="redblue"] .blue { color:var(--accent2); }
+    body[data-theme="redblue"] .red { color:var(--accent); }
+    @media (max-width:800px) {
+      .hero { grid-template-columns:1fr; padding-top:55px; }
+      .grid { grid-template-columns:1fr; }
+      .skills { grid-template-columns:1fr; }
+      .nav { align-items:flex-start; flex-direction:column; padding:14px 0; }
+      .navlinks { gap:12px; }
     }
-    nav a:hover { color: #00ff99; }
-    main { max-width: 1000px; margin: auto; padding: 35px 22px; }
-    section { padding: 28px 0; border-bottom: 1px solid #263746; }
-    h1, h2 { color: #00ff99; }
-    .intro {
-      padding: 35px 25px;
-      background: #101923;
-      border: 1px solid #263746;
-      border-radius: 12px;
-    }
-    .card {
-      background: #101923;
-      border: 1px solid #263746;
-      border-radius: 10px;
-      padding: 18px;
-      margin: 15px 0;
-    }
-    a { color: #00ff99; }
-    footer { text-align: center; padding: 25px; color: #9aabb9; }
   </style>
 </head>
-<body>
-  <header>
-    <h2>CYBERPLV</h2>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<body data-theme="terminal">
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">KARTHIK<span style="color:var(--text)">.SEC</span></a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#credentials">Credentials</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="theme-switch" aria-label="Choose website theme">
+        <button class="active" data-set-theme="terminal">Terminal</button>
+        <button data-set-theme="professional">Professional</button>
+        <button data-set-theme="redblue">Red + Blue</button>
+      </div>
+    </div>
+  </div>
 
   <main>
-    <div class="intro">
-      <h1>Cybersecurity Portfolio</h1>
-      <p>Cybersecurity enthusiast | Ethical Hacking | SOC Analysis</p>
-      <p>Welcome to my portfolio. Explore my cybersecurity learning
-      journey, technical skills and practical projects.</p>
-    </div>
+    <header class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Cybersecurity • Network Security • Ethical Hacking</div>
+        <h1>Pendem Lalu<br><span>Venkata Karthik</span></h1>
+        <p class="lead">B.Tech Computer Science and Engineering student building practical skills in network security, ethical hacking, vulnerability assessment and web application security.</p>
+        <div class="actions">
+          <a class="primary" href="#projects">Explore my projects</a>
+          <a class="secondary" href="https://www.linkedin.com/in/pendem-laluvenkata-39a589361" target="_blank" rel="noopener">LinkedIn profile ↗</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="terminal-head">karthik@portfolio:~$ whoami</div>
+        <div class="terminal-line"><b>Focus:</b> Network & application security</div>
+        <div class="terminal-line"><b>Learning:</b> Red Team / Blue Team</div>
+        <div class="terminal-line"><b>Tools:</b> Nmap, Burp Suite, Wireshark</div>
+        <div class="terminal-line"><b>Rank:</b> HTB Hacker (as reported)</div>
+        <div class="terminal-line"><b>Status:</b> Open to entry-level opportunities</div>
+      </aside>
+    </header>
 
     <section id="about">
-      <h2>About Me</h2>
-      <p>I am a cybersecurity professional interested in ethical
-      hacking, network security, vulnerability assessment and
-      security operations.</p>
+      <div class="container">
+        <div class="eyebrow">01 / About</div><h2>About me</h2>
+        <p class="section-intro">I am a Computer Science and Engineering student interested in cybersecurity and network security. My learning focus includes ethical hacking, penetration-testing fundamentals, VAPT and web application security. I am developing my practical experience through hands-on learning and personal lab projects.</p>
+        <div class="grid">
+          <article class="card"><h3 class="red">Red Team interests</h3><p>Ethical hacking, reconnaissance, network assessment, web application security and penetration-testing fundamentals.</p></article>
+          <article class="card"><h3 class="blue">Blue Team interests</h3><p>Network visibility, traffic analysis, security monitoring fundamentals and understanding defensive security workflows.</p></article>
+          <article class="card"><h3>Career objective</h3><p>Seeking an entry-level cybersecurity, SOC, VAPT or network-security trainee opportunity where I can learn and contribute.</p></article>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
-      <h2>Technical Skills</h2>
-      <p>Kali Linux | Nmap | Python | Linux | Networking |
-      Burp Suite | Vulnerability Assessment</p>
-      <p>Remove any tools or skills you have not yet used.</p>
+      <div class="container">
+        <div class="eyebrow">02 / Capabilities</div><h2>Technical skills</h2>
+        <p class="section-intro">Skills and tools listed in my resume. Practical proficiency should be discussed in the context of projects and labs.</p>
+        <div class="skills">
+          <article class="skill"><h3>Networking</h3><p>TCP/IP, OSI Model, IPv4, subnetting, DNS, DHCP, HTTP/HTTPS, TCP/UDP and network troubleshooting.</p></article>
+          <article class="skill"><h3>Security tools</h3><p>Nmap, Burp Suite, Wireshark and Hack The Box.</p></article>
+          <article class="skill"><h3>Cybersecurity</h3><p>Ethical hacking, network security, VAPT, web application security and penetration-testing fundamentals.</p></article>
+          <article class="skill"><h3>Programming</h3><p>C++, Java and Python.</p></article>
+          <article class="skill"><h3>Additional skills</h3><p>Website designing and problem solving.</p></article>
+          <article class="skill"><h3>Learning direction</h3><p>Building practical Red Team and Blue Team skills through authorized labs and documented projects.</p></article>
+        </div>
+      </div>
     </section>
 
     <section id="projects">
-      <h2>Projects</h2>
-      <div class="card">
-        <h3>1. Network Vulnerability Scanner</h3>
-        <p>A project to identify network hosts and potential
-        security weaknesses in an authorized lab.</p>
-        <p><em>Project in progress</em></p>
-      </div>
-      <div class="card">
-        <h3>2. SOC Monitoring Home Lab</h3>
-        <p>A home lab to practise log monitoring, alert analysis
-        and incident investigation.</p>
-        <p><em>Project in progress</em></p>
-      </div>
-      <div class="card">
-        <h3>3. Phishing URL Detection</h3>
-        <p>A project to analyse URLs and identify potentially
-        suspicious links.</p>
-        <p><em>Project in progress</em></p>
+      <div class="container">
+        <div class="eyebrow">03 / Practical work</div><h2>Cybersecurity projects</h2>
+        <p class="section-intro">These are planned portfolio projects, not claimed as completed work. Each card will link to its GitHub repository after the project is built and tested.</p>
+        <div class="grid">
+          <article class="card">
+            <span class="status">In progress / planned</span><h3>01. Network Vulnerability Scanner</h3>
+            <p>A Python and Nmap-based lab project to discover hosts, identify exposed services and document potential security findings on systems I own or am authorized to test.</p>
+            <div class="tagrow"><span class="tag">Python</span><span class="tag">Nmap</span><span class="tag">Networking</span></div>
+          </article>
+          <article class="card">
+            <span class="status">In progress / planned</span><h3>02. SOC Monitoring Home Lab</h3>
+            <p>A defensive-security lab to collect and review logs, investigate sample alerts and document basic incident-triage steps.</p>
+            <div class="tagrow"><span class="tag">Blue Team</span><span class="tag">Log analysis</span><span class="tag">Monitoring</span></div>
+          </article>
+          <article class="card">
+            <span class="status">In progress / planned</span><h3>03. Phishing URL Detection</h3>
+            <p>A Python learning project to inspect URL characteristics and flag suspicious indicators for further review. It will not claim that a URL is definitively safe or malicious.</p>
+            <div class="tagrow"><span class="tag">Python</span><span class="tag">URL analysis</span><span class="tag">Awareness</span></div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <p>CEH v13 — include only if officially earned.</p>
-      <p>Add other verified certifications here.</p>
+    <section id="credentials">
+      <div class="container">
+        <div class="eyebrow">04 / Learning & credentials</div><h2>Certifications and achievements</h2>
+        <p class="section-intro">Credential descriptions below follow the wording in my resume. Exact award titles and verification links can be added after checking each issuing body's record.</p>
+        <div class="grid">
+          <article class="credential"><h3>CEH</h3><p>Certified Ethical Hacker — examination passed.</p><small>Resume wording; list as certification only if the official credential has been awarded.</small></article>
+          <article class="credential"><h3>Google Cybersecurity</h3><p>Google Cybersecurity Professional Certificate.</p><small>Add credential verification link when available.</small></article>
+          <article class="credential"><h3>ISC2</h3><p>ISC2 cybersecurity credential.</p><small>Confirm the exact credential name before publishing.</small></article>
+          <article class="credential"><h3>CCSC</h3><p>CCSC cybersecurity credential.</p><small>Confirm the full credential title and issuer.</small></article>
+          <article class="credential"><h3>Cisco</h3><p>Cisco cybersecurity training / certification.</p><small>Specify the exact course or certification earned.</small></article>
+          <article class="credential"><h3>Red Team Leader</h3><p>Red Team Leader certification, as listed in my resume.</p><small>Add issuer and verification details when available.</small></article>
+          <article class="credential"><h3>Hack The Box</h3><p>Hacker rank achievement.</p><small>Hands-on cybersecurity challenges and learning.</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="eyebrow">05 / Education</div><h2>Education</h2>
+        <div class="timeline">
+          <article class="card">
+            <h3>B.Tech — Computer Science and Engineering</h3>
+            <p>Chalapathi Institute of Engineering and Technology</p>
+            <p><strong>Expected graduation:</strong> 2027</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>GitHub: <a href="https://github.com/cyberplv">github.com/cyberplv</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/pendem-laluvenkata-39a589361">My LinkedIn Profile</a></p>
-      <p>Email: Add your professional email address.</p>
+      <div class="container">
+        <div class="eyebrow">06 / Contact</div><h2>Let's connect</h2>
+        <div class="contactbox">
+          <p>Interested in entry-level cybersecurity, SOC analyst trainee, network security trainee or VAPT trainee opportunities.</p>
+          <p><strong>Email:</strong> <a href="mailto:plvkarthik@gmail.com">plvkarthik@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pendem-laluvenkata-39a589361" target="_blank" rel="noopener">linkedin.com/in/pendem-laluvenkata-39a589361</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/cyberplv" target="_blank" rel="noopener">github.com/cyberplv</a></p>
+        </div>
+      </div>
     </section>
   </main>
+  <footer><div class="container">© <span id="year"></span> Pendem Lalu Venkata Karthik · Built with HTML, CSS and JavaScript.</div></footer>
 
-  <footer>Cybersecurity Portfolio | Built with HTML and CSS</footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const themeButtons = document.querySelectorAll("[data-set-theme]");
+    themeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        document.body.dataset.theme = button.dataset.setTheme;
+        themeButtons.forEach(item => item.classList.toggle("active", item === button));
+      });
+    });
+  </script>
 </body>
 </html>
